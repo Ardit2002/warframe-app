@@ -1,19 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import dynamic from 'next/dynamic';
+
+// Dynamically import Leaflet to prevent server-side rendering issues (window not defined)
+const MapContainer = dynamic(() => import('react-leaflet').then((mod) => mod.MapContainer), { ssr: false });
+const TileLayer = dynamic(() => import('react-leaflet').then((mod) => mod.TileLayer), { ssr: false });
+const Marker = dynamic(() => import('react-leaflet').then((mod) => mod.Marker), { ssr: false });
+const Popup = dynamic(() => import('react-leaflet').then((mod) => mod.Popup), { ssr: false });
+
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 function FishingMap() {
-  const [mapCenter, setMapCenter] = useState([40.7128, -74.0060]); // Default to New York (Change later to a specific location)
+  const [mapCenter, setMapCenter] = useState([40.7128, -74.0060]); // Default to New York (change to a specific location)
   const [zoom, setZoom] = useState(13);
 
-  // Sample fishing spots data - Replace with actual data
+  // Sample fishing spots data
   const fishingSpots = [
     { id: 1, name: 'Fishing Spot 1', coords: [40.7128, -74.0060] },
     { id: 2, name: 'Fishing Spot 2', coords: [40.7238, -74.0110] }
   ];
 
-  // Adjust Leaflet icon to avoid issues with default icon (missing image)
+  // Adjust Leaflet icon to avoid issues with the default icon (missing image)
   const icon = new L.Icon({
     iconUrl: require('leaflet/dist/images/marker-icon.png'),
     iconSize: [25, 41],
