@@ -3,6 +3,8 @@ import LoginPage from './login'; // Ensure login.js exists in the pages director
 import Dashboard from './dashboard';
 import InteractiveMap from './interactive-map';
 import Home from './index'; // Home page should point here
+import '../styles/globals.css';
+import 'leaflet/dist/leaflet.css';
 
 function MyApp() {
   return (

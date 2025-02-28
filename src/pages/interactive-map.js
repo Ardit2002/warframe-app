@@ -1,5 +1,5 @@
 import React from 'react';
-import FarmingMap from '../components/FarmingMap';
+import FarmingMap from './FarmingMap';
 
 function InteractiveMap() {
   return (
