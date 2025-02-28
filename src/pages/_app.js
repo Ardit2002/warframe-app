@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LoginPage from './login'; // This should now correctly point to the login.js file
+import LoginPage from './login'; // Make sure login.js exists in the pages directory
 import Dashboard from './dashboard';
 import InteractiveMap from './interactive-map';
 import Home from './index'; // Home page should point here
